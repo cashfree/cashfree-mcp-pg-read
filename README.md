@@ -127,17 +127,13 @@ Cashfree MCP has the following tools available, grouped by the product category
 | -------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
 | **search**                                               | Search across the Cashfree Payments Developer Documentation.                                       |
 | **get-input-source-help**                               | Get comprehensive instructions for handling input source variable errors.                          |
-| **create-payment-link**                                  | Create a new payment link.                                                                         |
 | **fetch-payment-link-details**                           | View all details and status of a payment link.                                                     |
-| **cancel-payment-link**                                  | Cancel an active payment link. No further payments can be done against cancelled links             |
 | **get-orders-for-a-payment-link**                        | View all order details for a payment link.                                                         |
-| **create-order**                                         | Create orders with Cashfree to get a payment_sessions_id for transactions                          |
 | **get-order**                                            | Fetch order details using order_id                                                                 |
 | **get-order-extended**                                   | Get extended order data like address, cart, offers, customer details etc                           |
 | **get-eligible-payment-methods**                         | Get eligible payment methods for a given order amount and ID                                       |
 | **get-payments-for-an-order**                            | View all payment details for an order.                                                             |
 | **get-payment-by-id**                                    | View payment details of an order for a Payment ID.                                                 |
-| **create-refund**                                        | Initiate refunds.                                                                                  |
 | **get-all-refunds-for-an-order**                         | Fetch all refunds processed against an order.                                                      |
 | **get-refund**                                           | Fetch a specific refund processed on your Cashfree Account.                                        |
 | **get-all-settlements**                                  | Get all settlement details by specifying the settlement ID, settlement UTR, or date range.         |
@@ -146,8 +142,6 @@ Cashfree MCP has the following tools available, grouped by the product category
 | **get-disputes-by-order-id**                             | Get all dispute details by Order ID                                                                |
 | **get-disputes-by-payment-id**                           | Get all dispute details by Payment ID                                                              |
 | **get-disputes-by-dispute-id**                           | Get dispute details by Dispute ID                                                                  |
-| **accept-dispute-by-dispute-id**                         | Accept a dispute by its Dispute ID                                                                 |
-| **submit-evidence-to-contest-the-dispute-by-dispute-id** | Submit evidence to contest a dispute                                                               |
 | **simulate-payment**                                     | Simulate payment for testing. Requires prior order creation                                        |
 | **fetch-simulation**                                     | Fetch simulated payment details                                                                    |
 

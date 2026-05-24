@@ -15455,7 +15455,7 @@
       "post": {
         "summary": "Create Payment Link",
         "x-mcp": {
-          "enabled": true,
+          "enabled": false,
           "config": {
             "elicitation": {
               "$ref": "#/components/x-elicitationConfig/createPaymentLink"
@@ -15673,7 +15673,7 @@
       "post": {
         "summary": "Cancel Payment Link",
         "x-mcp": {
-          "enabled": true
+          "enabled": false
         },
         "description": "Use this API to cancel a payment link. No further payments can be done against a cancelled link. Only a link in ACTIVE status can be cancelled.",
         "tags": [
@@ -15895,7 +15895,7 @@
       "post": {
         "summary": "Create Order",
         "x-mcp": {
-          "enabled": true,
+          "enabled": false,
           "config": {
             "elicitation": {
               "$ref": "#/components/x-elicitationConfig/createOrder"
@@ -16546,7 +16546,7 @@
       "post": {
         "summary": "Create Refund",
         "x-mcp": {
-          "enabled": true,
+          "enabled": false,
           "config": {
             "elicitation": {
               "$ref": "#/components/x-elicitationConfig/createRefund"
@@ -17467,7 +17467,7 @@
         ],
         "summary": "Accept Dispute by Dispute ID",
         "x-mcp": {
-          "enabled": true
+          "enabled": false
         },
         "operationId": "PGAcceptDisputeByID",
         "description": "Use this API to get accept the Dispute by specifying the Dispute ID.",
@@ -17577,7 +17577,7 @@
         ],
         "summary": "Submit Evidence to contest the Dispute by Dispute ID",
         "x-mcp": {
-          "enabled": true
+          "enabled": false
         },
         "operationId": "PGUploadDisputesDocuments",
         "description": "Use this API to Submit the Evidences to contest the Dispute by specifying the Dispute ID.",
