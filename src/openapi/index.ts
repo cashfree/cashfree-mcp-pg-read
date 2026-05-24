@@ -12,7 +12,6 @@ import {
   getEndpointsFromOpenApi,
   loadEnv,
   getValFromNestedJson,
-  generateCfSignature,
   getElicitationConfig,
   hasElicitationEnabled,
   getElicitationRequestFields,
@@ -209,21 +208,6 @@ export async function createToolsFromOpenApi(
               }
             });
           }
-        }
-
-        if (openApiPath.includes("PO") || openApiPath.includes("VRS")) {
-          const clientId =
-            typeof envVars.header?.["x-client-id"] === "string"
-              ? envVars.header["x-client-id"]
-              : "";
-          const publicKey =
-            typeof envVars.TWO_FA_PUBLIC_KEY === "string"
-              ? envVars.TWO_FA_PUBLIC_KEY
-              : "";
-          inputHeaders["x-cf-signature"] = generateCfSignature(
-            clientId,
-            publicKey
-          );
         }
 
         const requestConfig = {

@@ -13,8 +13,6 @@ import {
   NumberSchema
 } from "@modelcontextprotocol/sdk/types.js";
 import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
-import crypto from "crypto";
-import fs from "fs";
 
 export type CategorizedZod = {
   url: string;
@@ -340,10 +338,6 @@ export function isMcpEnabled(path: string): boolean {
   switch (product) {
     case "PG":
       return tools.includes("pg");
-    case "PO":
-      return tools.includes("payouts");
-    case "VRS":
-      return tools.includes("secureid");
     default:
       return false;
   }
@@ -352,47 +346,6 @@ export function isMcpEnabled(path: string): boolean {
 export function isMcpEnabledEndpoint(endpointSpec: Endpoint): boolean {
   const mcp = (endpointSpec as any)["x-mcp"];
   return mcp?.["enabled"] === true;
-}
-
-/**
- * Generate a signature by encrypting the client ID and current UNIX timestamp using RSA encryption.
- * @param {string} clientId - The client ID to be used in the signature.
- * @param {string} publicKey - The RSA public key for encryption.
- * @returns {string} - The generated signature.
- */
-export function generateCfSignature(clientId: string, publicKey: string) {
-  try {
-    const timestamp = Math.floor(Date.now() / 1000); // Current UNIX timestamp
-    const data = `${clientId}.${timestamp}`;
-    const buffer = Buffer.from(data, "utf8");
-    const encrypted = crypto.publicEncrypt(publicKey, buffer);
-    return encrypted.toString("base64");
-  } catch (error) {
-    if (error instanceof Error) {
-      console.error(`Error generating signature: ${error.message}`);
-    } else {
-      console.error("Error generating signature: Unknown error");
-    }
-  }
-}
-
-/**
- * Retrieve the public key from a given file path.
- * @param {string} path - The file path to the public key.
- * @returns {string} - The public key as a string.
- * @throws {Error} - If the file cannot be read.
- */
-export function getPublicKeyFromPath(path: string): string | null {
-  try {
-    return fs.readFileSync(path, "utf8");
-  } catch (error) {
-    console.error(
-      `Warning: Failed to read public key from path: ${
-        error instanceof Error ? error.message : "Unknown error"
-      }`
-    );
-    return null;
-  }
 }
 
 /**

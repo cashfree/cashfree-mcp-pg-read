@@ -2,7 +2,7 @@
 
 # Cashfree MCP Server
 
-Cashfree MCP server allows AI tools and agents to integrate with [Cashfree](https://www.cashfree.com/) APIs (Payment Gateway, Payouts, and SecureID) using the [Model Context Protocol (MCP)](https://modelcontextprotocol.io/introduction).
+Cashfree MCP server allows AI tools and agents to integrate with the [Cashfree](https://www.cashfree.com/) Payment Gateway APIs using the [Model Context Protocol (MCP)](https://modelcontextprotocol.io/introduction).
 
 ## Setup
 
@@ -60,12 +60,7 @@ Add the following configuration block to your `claude_desktop_config.json`
       "env": {
         "PAYMENTS_APP_ID": "YOUR_PG_CLIENT_ID",
         "PAYMENTS_APP_SECRET": "YOUR_PG_CLIENT_SECRET",
-        "PAYOUTS_APP_ID": "YOUR_PAYOUTS_CLIENT_ID",
-        "PAYOUTS_APP_SECRET": "YOUR_PAYOUTS_CLIENT_SECRET",
-        "TWO_FA_PUBLIC_KEY_PEM_PATH": "/path/to/public_key.pem",
-        "SECUREID_APP_ID": "YOUR_SECUREID_CLIENT_ID",
-        "SECUREID_APP_SECRET": "YOUR_SECUREID_CLIENT_SECRET",
-        "TOOLS": "pg,payouts,secureid",
+        "TOOLS": "pg",
         "ENV": "sandbox",
         "ELICITATION_ENABLED": "true"
       }
@@ -89,12 +84,7 @@ Add the following configuration block to your VS Code settings
         "env": {
           "PAYMENTS_APP_ID": "YOUR_PG_CLIENT_ID",
           "PAYMENTS_APP_SECRET": "YOUR_PG_CLIENT_SECRET",
-          "PAYOUTS_APP_ID": "YOUR_PAYOUTS_CLIENT_ID",
-          "PAYOUTS_APP_SECRET": "YOUR_PAYOUTS_CLIENT_SECRET",
-          "TWO_FA_PUBLIC_KEY_PEM_PATH": "/path/to/public_key.pem",
-          "SECUREID_APP_ID": "YOUR_SECUREID_CLIENT_ID",
-          "SECUREID_APP_SECRET": "YOUR_SECUREID_CLIENT_SECRET",
-          "TOOLS": "pg,payouts,secureid",
+          "TOOLS": "pg",
           "ENV": "sandbox",
           "ELICITATION_ENABLED": "true"
         }
@@ -106,23 +96,10 @@ Add the following configuration block to your VS Code settings
 
 ### API Credentials
 
-Set the following environment variables for each service:
-**Payment Gateway:**
+Set the following environment variables for the Payment Gateway:
 
 - `PAYMENTS_APP_ID`: Your Payment Gateway client ID
 - `PAYMENTS_APP_SECRET`: Your Payment Gateway client secret
-
-**Payouts:**
-
-- `PAYOUTS_APP_ID`: Your Payouts client ID
-- `PAYOUTS_APP_SECRET`: Your Payouts client secret
-- `TWO_FA_PUBLIC_KEY_PEM_PATH`: Path to your 2FA public key (required only if 2FA is enabled)
-
-**SecureID:**
-
-- `SECUREID_APP_ID`: Your SecureID client ID
-- `SECUREID_APP_SECRET`: Your SecureID client secret
-- `TWO_FA_PUBLIC_KEY_PEM_PATH`: Path to your 2FA public key (required only if 2FA is enabled)
 
 ### Environment
 
@@ -133,8 +110,6 @@ Set the following environment variables for each service:
 `TOOLS`: Comma-separated list of modules to enable. Available options:
 
 - `pg`: Payment Gateway APIs
-- `payouts`: Payouts APIs
-- `secureid`: SecureID APIs
 
 ### Elicitation Configuration
 
@@ -175,29 +150,6 @@ Cashfree MCP has the following tools available, grouped by the product category
 | **submit-evidence-to-contest-the-dispute-by-dispute-id** | Submit evidence to contest a dispute                                                               |
 | **simulate-payment**                                     | Simulate payment for testing. Requires prior order creation                                        |
 | **fetch-simulation**                                     | Fetch simulated payment details                                                                    |
-
-### Payouts
-
-| Tool Name                        | Description                                                                      |
-| -------------------------------- | -------------------------------------------------------------------------------- |
-| **standard-transfer-v2**         | Initiate an amount transfer at Cashfree Payments.                                |
-| **get-transfer-status-v2**       | Get the status of an initiated transfer.                                         |
-| **batch-transfer-v2**            | Initiate a batch transfer request at Cashfree Payments.                          |
-| **get-batch-transfer-status-v2** | Get the status of an initiated batch transfer.                                   |
-| **authorize**                    | Authenticate with the Cashfree system and obtain the authorization bearer token. |
-| **create-cashgram**              | Create a Cashgram.                                                               |
-| **deactivate-cashgram**          | Deactivate a Cashgram.                                                           |
-| **get-cashgram-status**          | Get the status of a created Cashgram.                                            |
-
-### SecureID
-
-| Tool Name                      | Description                                       |
-| ------------------------------ | ------------------------------------------------- |
-| **verify-name-match**          | Verify names with variations.                     |
-| **generate-kyc-link**          | Generate a verification form for KYC information. |
-| **get-kyc-link-status**        | Get the status of a KYC verification form.        |
-| **generate-static-kyc-link**   | Generate a static KYC link.                       |
-| **deactivate-static-kyc-link** | Deactivate a static KYC link.                     |
 
 ## License
 
